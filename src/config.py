@@ -15,7 +15,7 @@ file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'config.ini
 _config = configparser.RawConfigParser()
 _config.read(file_path)
 
-tss_settings = dict(_config.items('edge-tss'))
+tss_settings = dict(_config.items('edge-tts'))
 
 api_key = _config.get('openai', 'api_key')
 temperature = _config.get('openai', 'temperature')
@@ -33,11 +33,11 @@ context_plugin = _config.getboolean('plugin', 'context')
 try:
     live2D_actions = []
     live2D_embeddings = []
+    live2D_action_dict= []
     if action_plugin:
         with open("./action.json", 'r') as load_f:
             live2D_action_dict = json.load(load_f)
         live2D_actions = live2D_action_dict.keys()
-        assert live2D_embeddings
         live2D_embeddings = [live2D_action_dict[action] for action in live2D_actions]
 except Exception as e:
     print('读取embedding文件错误，请检查本地是否生成action.json 且动作不为空， 使用action plugin前请先运行 python manager.py action', e)

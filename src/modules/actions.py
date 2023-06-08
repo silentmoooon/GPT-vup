@@ -26,7 +26,7 @@ async def play_action(action_index):
 
     if action_index > len(live2D_actions) - 1:
         raise '动作不存在'
-    send_hotkey_request = vts.vts_request.requestTriggerHotKey(live2D_actions[action_index])
+    send_hotkey_request = vts.vts_request.requestTriggerHotKey(list(live2D_actions)[action_index])
     await vts.request(send_hotkey_request)
     await vts.close()
 

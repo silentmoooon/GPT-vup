@@ -19,3 +19,5 @@ __pycache__/
 
 env/
 config.ini
+venv
+src/action.json

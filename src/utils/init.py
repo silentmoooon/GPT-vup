@@ -81,7 +81,7 @@ async def initialize_action():
         raise e
 
     # 写入
-    with open("../action.json", "w") as dump_f:
+    with open("./action.json", "w") as dump_f:
         json.dump(action_dict, dump_f)
 
     # 测试

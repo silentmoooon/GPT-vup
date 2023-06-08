@@ -64,7 +64,9 @@ class VtuBer:
             logger.debug(f"开始生成动作")
             t0 = time.time()
             # 匹配动作
-            self.event.action = int(top_n_indices_from_embeddings(embedding, live2D_embeddings, top=1)[0])
+            actions = top_n_indices_from_embeddings(embedding, live2D_embeddings, top=1)
+            if len(actions)>0 :
+                self.event.action = int(actions[0])
             logger.debug(f"动作请求耗时:{time.time()-t0}")
 
     async def output(self):
